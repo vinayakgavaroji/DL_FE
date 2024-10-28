@@ -1,0 +1,91 @@
+<nav class="navbar navbar-expand-md col-12" style="background-color: #2f5597;">
+    <button class="navbar-toggler text-light" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent"
+        aria-controls="navbarContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarContent">
+        <h3 class="text-light mx-auto my-2">Dashboard</h3>
+    </div>
+</nav>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-2 text-dark">
+            <ul class="nav flex-column">
+                <li class="nav-item p-3 labels" [routerLink]="'/addBook'">
+                    <i class="bi bi-plus-lg"></i> Add Book
+                </li>
+                <li class="nav-item p-3 labels" (click)="showDeleteTable()">
+                    <i class="bi bi-x-lg"></i> Delete Book
+                </li>
+                <li class="nav-item p-3 labels" (click)="showViewTable()">
+                    <i class="bi bi-book"></i> View Book
+                </li>
+                <li class="nav-item p-3 labels" [routerLink]="'/addStudent'">
+                    <i class="bi bi-person-plus"></i> Add Student
+                </li>
+                <li class="nav-item p-3 labels" [routerLink]="'/issuebooks'">
+                    <i class="bi bi-bookmark"></i> Issue Book
+                </li>
+                <li class="nav-item p-3 labels" [routerLink]="'/return-book'">
+                    <i class="bi bi-arrow-left-circle"></i> Return Book
+                </li>
+                <li class="nav-item p-3 labels">
+                    <i class="bi bi-bar-chart"></i> Report
+                </li>
+                <li class="nav-item p-3 labels" (click)="logout()">
+                    <i class="bi bi-box-arrow-right"></i> Logout
+                </li>
+            </ul>
+        </div>
+
+        <div class="col-md-10">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-6 col-12 mt-4">
+                        <div class="card h-100">
+                            <div class="card-body">
+                                <h5 class="card-title text-center">No. Of Books</h5>
+                                <canvas id="barChart"></canvas>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-12 mt-4">
+                        <div class="card h-100">
+                            <div class="card-body">
+                                <h5 class="card-title text-center">No. Of Books</h5>
+                                <canvas id="pieChart" class="chart"></canvas>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row mt-4">
+                <div class="col-12">
+                    <h5>Issued Book Summary</h5>
+                    <table class="table table-success table-bordered">
+                        <thead>
+                            <tr>
+                                <th>Book Name</th>
+                                <th>Author</th>
+                                <th>Roll No.</th>
+                                <th>Student Name</th>
+                                <th>Issued On</th>
+                            </tr>
+                        </thead>
+                        <tbody *ngFor="let i of book">
+                            <tr *ngIf="i.issuedBooks.length > 0">
+                                <td>{{i.issuedBooks[0].bookName}}</td>
+                                <td>{{i.issuedBooks[0].author}}</td>
+                                <td>{{i.rollNo}}</td>
+                                <td>{{i.name}}</td>
+                                <td>{{i.issuedBooks[0].issuedOn | date}}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

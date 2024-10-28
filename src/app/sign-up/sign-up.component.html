@@ -1,0 +1,50 @@
+<div class="container-fluid vh-100 d-flex justify-content-center align-items-center bg-light">
+    <div class="card p-5 shadow-lg col-md-6">
+        <h1 class="text-center header mb-2">Digital Library</h1>
+        <form [formGroup]="signUpForm" (ngSubmit)="onSignup()">
+            <div class="card border-0">
+                <div class="card-body">
+                    <div class="from-group my-2">
+                        <label class="inputLabel" for="username">Username</label>
+                        <input type="text" class="form-control" formControlName="name">
+                        <div class="text-danger"
+                            *ngIf="signUpForm.controls['name'].dirty && signUpForm.controls['name'].touched">
+                            <span class="text-danger" *ngIf="signUpForm.controls['name']?.errors?.['required']">
+                                Username is required
+                            </span>
+                        </div>
+                    </div>
+                    <div class="from-group my-2">
+                        <label class="inputLabel" for="email">Email</label>
+                        <input type="text" class="form-control" formControlName="email">
+                        <div class="text-danger" *ngIf="signUpForm.controls['email'].dirty && signUpForm.controls['email'].touched">
+                            <span class="text-danger" *ngIf="signUpForm.controls['email']?.errors?.['required']">
+                                Email is required
+                            </span>
+                            <span class="text-danger" *ngIf="!submitted && signUpForm.controls['email']?.errors?.['email']">
+                                Invalid Email Id
+                            </span>
+                        </div>
+                    </div>
+                    <div class="from-group my-2">
+                        <label class="inputLabel" for="password">Password</label>
+                        <input type="password" class="form-control" formControlName="password">
+                        <div *ngIf="signUpForm.controls['password'].dirty && signUpForm.controls['password'].touched">
+                            <span class="text-danger" *ngIf="signUpForm.controls['password']?.errors?.['required']">
+                                Password is required
+                            </span>
+                            <span class="text-danger" *ngIf="signUpForm.controls['password']?.errors?.['min']">
+                                Password should contain minimum of 8 characters
+                            </span>
+                        </div>
+                    </div>
+                    <button [disabled]="!submitted && signUpForm.invalid" class="btn btn-primary form-control my-2" type="submit">Sign Up</button>
+
+                    <div class="text-center">
+                        <span>Already have account? <a [routerLink]="'/login'">Login</a></span>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
