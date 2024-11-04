@@ -8,20 +8,20 @@ import { BehaviorSubject, tap } from 'rxjs';
 })
 export class AuthService {
 
-  private _isLoggedIn = new BehaviorSubject<boolean>(false);
+  private _isLoggedIn = new BehaviorSubject<boolean>(this.hasToken());
   isLoggedIn$ = this._isLoggedIn.asObservable();
   private _backendUrl = 'http://localhost:3000/api/protected-route/';
-  tokenKey = 'token';
 
-  constructor(private http: HttpClient, private router: Router) {
-    const token = localStorage.getItem(this.tokenKey);
-    this._isLoggedIn.next(!!token);
+  constructor(private http: HttpClient, private router: Router) { }
+
+  private hasToken(): boolean {
+    return !!localStorage.getItem('token');
   }
 
   login(body: any) {
     return this.http.post<{ token: string }>(this._backendUrl + "login", body)
       .pipe(tap(res => {
-        localStorage.setItem(this.tokenKey, res.token);
+        localStorage.setItem('token', res.token);
         this._isLoggedIn.next(true);
       }));
   }
@@ -29,19 +29,14 @@ export class AuthService {
   signup(body: any) {
     return this.http.post<{ token: string }>(this._backendUrl + "signup", body)
       .pipe(tap(res => {
-        console.log(res)
-        localStorage.setItem(this.tokenKey, res.token);
+        localStorage.setItem('token', res.token);
         this._isLoggedIn.next(true);
       }));
   }
 
   logout() {
-    localStorage.removeItem(this.tokenKey);
+    localStorage.removeItem('token');
     this._isLoggedIn.next(false);
     this.router.navigate(['/login']);
-  }
-
-  getToken() {
-    return localStorage.getItem(this.tokenKey);
   }
 }

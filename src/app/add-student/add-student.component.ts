@@ -25,8 +25,10 @@ export class AddStudentComponent implements OnInit{
 
   addStudent(){
     this.submitted = true;
-    this.shared.addStudent(this.studentForm.value).subscribe(() => {
-      this.successMsg = "Student successfully added"
+    this.shared.addStudent(this.studentForm.value).subscribe((res) => {
+      console.log(res)
+      this.successMsg = "Student successfully added : " + res.name
+      this.studentForm.reset()
     },(err) => {
       this.errorMsg = "Failed to add student"
     })

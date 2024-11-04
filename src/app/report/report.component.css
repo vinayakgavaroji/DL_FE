@@ -1,0 +1,32 @@
+/* Ensure charts take full width and maintain aspect ratio */
+.responsive-chart {
+    width: 100% !important;
+    height: 400px !important; /* Set a consistent height */
+}
+
+/* Make cards flexible and maintain equal height */
+.card {
+    border-radius: 8px;
+    transition: transform 0.2s;
+}
+
+.card:hover {
+    transform: scale(1.02);
+}
+
+@media (max-width: 768px) {
+    /* Stack cards vertically on smaller screens */
+    .card-title {
+        font-size: 1rem;
+    }
+}
+
+@media (max-width: 576px) {
+    /* Adjust padding and layout for extra-small screens */
+    .container-fluid {
+        padding: 0.5rem;
+    }
+    .card {
+        margin: 0.5rem 0;
+    }
+}

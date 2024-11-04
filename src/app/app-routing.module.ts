@@ -9,17 +9,22 @@ import { AddStudentComponent } from './add-student/add-student.component';
 import { AuthGuard } from 'src/services/auth/auth.guard';
 import { SignUpComponent } from './sign-up/sign-up.component';
 import { ReturnBookComponent } from './return-book/return-book.component';
+import { ReportComponent } from './report/report.component';
+import { SidebarComponent } from './sidebar/sidebar.component';
 
 const routes: Routes = [
   { path: "login", component: LoginComponent },
   { path: "sign-up", component: SignUpComponent },
   { path: "dashboard", component: DashboardComponent, canActivate: [AuthGuard] },
+  { path: "sidebar", component: SidebarComponent },
   { path: "addBook", component:AddBookComponent },
   { path: "books", component: BooksComponent },
   { path: "issuebooks", component: IssueBookComponent },
   { path: "addStudent", component: AddStudentComponent },
   { path: "return-book", component: ReturnBookComponent },
-  { path: "**", redirectTo: "/login", pathMatch:"full" }
+  { path: "report", component: ReportComponent },
+  { path: "**", redirectTo: "/dashboard", pathMatch:"full" },
+  { path: " ", redirectTo:"/dashboard", pathMatch:"full" }
 ];
 
 @NgModule({

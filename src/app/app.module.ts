@@ -14,6 +14,10 @@ import { AddStudentComponent } from './add-student/add-student.component';
 import { AuthInterceptor } from 'src/services/auth/auth.interceptor';
 import { SignUpComponent } from './sign-up/sign-up.component';
 import { ReturnBookComponent } from './return-book/return-book.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ReportComponent } from './report/report.component';
+import { ScrollingModule } from '@angular/cdk/scrolling';
+import { SidebarComponent } from './sidebar/sidebar.component';
 
 @NgModule({
   declarations: [
@@ -26,13 +30,17 @@ import { ReturnBookComponent } from './return-book/return-book.component';
     AddStudentComponent,
     SignUpComponent,
     ReturnBookComponent,
+    ReportComponent,
+    SidebarComponent,
   ],
   imports: [
     BrowserModule,
     FormsModule,
     ReactiveFormsModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    BrowserAnimationsModule,
+    ScrollingModule
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true }

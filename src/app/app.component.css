@@ -1,0 +1,9 @@
+/* app.component.css */
+.container-fluid {
+    margin: 0;
+    padding: 0;
+}
+
+.row.flex-nowrap {
+    margin: 0;
+}

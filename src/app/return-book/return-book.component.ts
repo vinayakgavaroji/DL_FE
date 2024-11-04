@@ -32,4 +32,156 @@ export class ReturnBookComponent implements OnInit{
   //   console.log('All inputs completed:', this.i1, this.i2, this.i3);
   // }
 
+  books = [
+    {
+      title: 'The Great Gatsby',
+      author: 'F. Scott Fitzgerald',
+      published: new Date(1925, 3, 10),
+      isbn: '978-0743273565',
+      image: 'https://example.com/great-gatsby.jpg' // Replace with actual image URL
+    },
+    {
+      title: 'To Kill a Mockingbird',
+      author: 'Harper Lee',
+      published: new Date(1960, 6, 11),
+      isbn: '978-0061120084',
+      image: 'https://example.com/to-kill-a-mockingbird.jpg' // Replace with actual image URL
+    },
+    {
+      title: 'To Kill a Mockingbird',
+      author: 'Harper Lee',
+      published: new Date(1960, 6, 11),
+      isbn: '978-0061120084',
+      image: 'https://example.com/to-kill-a-mockingbird.jpg' // Replace with actual image URL
+    },
+    {
+      title: 'To Kill a Mockingbird',
+      author: 'Harper Lee',
+      published: new Date(1960, 6, 11),
+      isbn: '978-0061120084',
+      image: 'https://example.com/to-kill-a-mockingbird.jpg' // Replace with actual image URL
+    },
+    {
+      title: 'To Kill a Mockingbird',
+      author: 'Harper Lee',
+      published: new Date(1960, 6, 11),
+      isbn: '978-0061120084',
+      image: 'https://example.com/to-kill-a-mockingbird.jpg' // Replace with actual image URL
+    },
+    {
+      title: 'To Kill a Mockingbird',
+      author: 'Harper Lee',
+      published: new Date(1960, 6, 11),
+      isbn: '978-0061120084',
+      image: 'https://example.com/to-kill-a-mockingbird.jpg' // Replace with actual image URL
+    },
+    {
+      title: 'To Kill a Mockingbird',
+      author: 'Harper Lee',
+      published: new Date(1960, 6, 11),
+      isbn: '978-0061120084',
+      image: 'https://example.com/to-kill-a-mockingbird.jpg' // Replace with actual image URL
+    },
+    {
+      title: 'To Kill a Mockingbird',
+      author: 'Harper Lee',
+      published: new Date(1960, 6, 11),
+      isbn: '978-0061120084',
+      image: 'https://example.com/to-kill-a-mockingbird.jpg' // Replace with actual image URL
+    },
+    {
+      title: 'To Kill a Mockingbird',
+      author: 'Harper Lee',
+      published: new Date(1960, 6, 11),
+      isbn: '978-0061120084',
+      image: 'https://example.com/to-kill-a-mockingbird.jpg' // Replace with actual image URL
+    },
+    {
+      title: 'To Kill a Mockingbird',
+      author: 'Harper Lee',
+      published: new Date(1960, 6, 11),
+      isbn: '978-0061120084',
+      image: 'https://example.com/to-kill-a-mockingbird.jpg' // Replace with actual image URL
+    },
+    {
+      title: 'To Kill a Mockingbird',
+      author: 'Harper Lee',
+      published: new Date(1960, 6, 11),
+      isbn: '978-0061120084',
+      image: 'https://example.com/to-kill-a-mockingbird.jpg' // Replace with actual image URL
+    },
+
+    {
+      title: 'To Kill a Mockingbird',
+      author: 'Harper Lee',
+      published: new Date(1960, 6, 11),
+      isbn: '978-0061120084',
+      image: 'https://example.com/to-kill-a-mockingbird.jpg' // Replace with actual image URL
+    },
+    {
+      title: 'To Kill a Mockingbird',
+      author: 'Harper Lee',
+      published: new Date(1960, 6, 11),
+      isbn: '978-0061120084',
+      image: 'https://example.com/to-kill-a-mockingbird.jpg' // Replace with actual image URL
+    },
+    {
+      title: 'To Kill a Mockingbird',
+      author: 'Harper Lee',
+      published: new Date(1960, 6, 11),
+      isbn: '978-0061120084',
+      image: 'https://example.com/to-kill-a-mockingbird.jpg' // Replace with actual image URL
+    },
+
+    {
+      title: 'To Kill a Mockingbird',
+      author: 'Harper Lee',
+      published: new Date(1960, 6, 11),
+      isbn: '978-0061120084',
+      image: 'https://example.com/to-kill-a-mockingbird.jpg' // Replace with actual image URL
+    },
+    {
+      title: 'To Kill a Mockingbird',
+      author: 'Harper Lee',
+      published: new Date(1960, 6, 11),
+      isbn: '978-0061120084',
+      image: 'https://example.com/to-kill-a-mockingbird.jpg' // Replace with actual image URL
+    },
+    {
+      title: 'To Kill a Mockingbird',
+      author: 'Harper Lee',
+      published: new Date(1960, 6, 11),
+      isbn: '978-0061120084',
+      image: 'https://example.com/to-kill-a-mockingbird.jpg' // Replace with actual image URL
+    },
+    {
+      title: 'To Kill a Mockingbird',
+      author: 'Harper Lee',
+      published: new Date(1960, 6, 11),
+      isbn: '978-0061120084',
+      image: 'https://example.com/to-kill-a-mockingbird.jpg' // Replace with actual image URL
+    },
+    {
+      title: 'To Kill a Mockingbird',
+      author: 'Harper Lee',
+      published: new Date(1960, 6, 11),
+      isbn: '978-0061120084',
+      image: 'https://example.com/to-kill-a-mockingbird.jpg' // Replace with actual image URL
+    },
+    {
+      title: 'To Kill a Mockingbird',
+      author: 'Harper Lee',
+      published: new Date(1960, 6, 11),
+      isbn: '978-0061120084',
+      image: 'https://example.com/to-kill-a-mockingbird.jpg' // Replace with actual image URL
+    },
+    {
+      title: 'To Kill a Mockingbird',
+      author: 'Harper Lee',
+      published: new Date(1960, 6, 11),
+      isbn: '978-0061120084',
+      image: 'https://example.com/to-kill-a-mockingbird.jpg' // Replace with actual image URL
+    },
+  ];
+
 }

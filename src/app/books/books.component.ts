@@ -29,8 +29,8 @@ export class BooksComponent implements OnInit{
   }
 
   deleteBook(id: any){
-    this.shared.deleteBook(id).subscribe(() => {
-      alert("Deleted Successfully");
+    this.shared.deleteBook(id).subscribe((res) => {
+      alert(res.message);
       this.loadBook();
     })
   }
