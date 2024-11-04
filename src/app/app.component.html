@@ -1,1 +1,14 @@
-<router-outlet></router-outlet>
+<!-- app.component.html -->
+<div class="container-fluid">
+    <div class="row flex-nowrap">
+
+        <div *ngIf="isLoggedIn" class="col-auto col-md-3 col-xl-2 px-0">
+            <app-sidebar></app-sidebar>
+        </div>
+        
+        <!-- Dashboard content on the right -->
+        <div class="col">
+            <router-outlet></router-outlet>
+        </div>
+    </div>
+</div>

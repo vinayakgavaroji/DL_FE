@@ -1,37 +1,31 @@
-<nav class="navbar navbar-expand-lg navbar-dark" style="background-color: #2f5597;">
-    <h3 class="text-light mx-auto">{{deleteMode ? "Delete Book" : "View Book"}}</h3>
-</nav>
 <div class="container-fluid mt-4">
     <div class="row justify-content-center">
         <div class="col-md-12">
-            <table class="table table-success table-bordered">
-                <thead class="text-center">
-                    <tr>
-                        <th>Book Name</th>
-                        <th>Author</th>
-                        <th>Publication</th>
-                        <th>Qty.</th>
-                        <th>Price</th>
-                        <th>Branch</th>
-                        <th *ngIf="!deleteMode">Details</th>
-                        <th *ngIf="deleteMode">Actions</th>
-                    </tr>
-                </thead>
-                <tbody class="text-center" *ngFor="let b of book">
-                    <tr>
-                        <td>{{b.name}}</td>
-                        <td>{{b.author}}</td>
-                        <td>{{b.publication}}</td>
-                        <td>{{b.qty}}</td>
-                        <td>{{b.price}}</td>
-                        <td>{{b.branch}}</td>
-                        <td *ngIf="!deleteMode">{{b.details}}</td>
-                        <td *ngIf="deleteMode" class="text-center text-danger">
-                            <h3 type="button" (click)="deleteBook(b.id)"><i class="bi bi-x-lg"></i></h3>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
+            <div class="row">
+                <div class="col-lg-3 col-md-4 col-sm-6 mb-4" *ngFor="let b of book">
+                    <div class="card h-100 border-success">
+                        <div class="card-body">
+                            <h5 class="card-title text-success">{{b.name}}</h5>
+                            <h6 class="card-subtitle mb-2 text-muted">{{b.author}}</h6>
+                            <p class="card-text">
+                                <strong>Publication:</strong> {{b.publication}}<br>
+                                <strong>Qty:</strong> {{b.qty}}<br>
+                                <strong>Price:</strong> {{b.price}}<br>
+                                <strong>Branch:</strong> {{b.branch}}
+                            </p>
+                            <div *ngIf="!deleteMode">
+                                <p class="card-text"><strong>Details:</strong> {{b.details}}</p>
+                            </div>
+                            <div *ngIf="deleteMode">
+                                <button type="button" class="btn btn-danger" (click)="deleteBook(b._id)">
+                                    <!-- <i class="bi bi-x-lg"></i>  -->
+                                    Delete
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </div>

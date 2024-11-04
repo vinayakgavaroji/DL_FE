@@ -1,0 +1,20 @@
+.sidebar {
+    font-size: 1.2em; /* Increase font size for larger text */
+}
+
+.sidebar-title {
+    font-size: 1.5em;
+    width: 100%;
+}
+
+.nav-item .sidebar-link {
+    padding: 15px 20px; /* Increase padding for larger clickable area */
+    font-size: 1.1em;
+    display: flex;
+    transition: background-color 0.2s ease;
+}
+
+.nav-item .sidebar-link:hover {
+    background-color: rgba(255, 255, 255, 0.1); /* Subtle background on hover */
+    border-radius: 5px;
+}

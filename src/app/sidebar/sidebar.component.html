@@ -1,0 +1,47 @@
+<nav class="sidebar d-flex flex-column align-items-center bg-dark text-white min-vh-100">
+    <a href="/" class="sidebar-title d-flex p-4 text-white text-decoration-none">
+        <span class="fs-4">Digital Library</span>
+    </a>
+    <ul class="nav flex-column w-100">
+        <li class="nav-item">
+            <a [routerLink]="'/addBook'" class="nav-link text-white sidebar-link">
+                <i class="bi bi-plus-lg"></i> Add Book
+            </a>
+        </li>
+        <li class="nav-item">
+            <a (click)="showDeleteTable()" class="nav-link text-white sidebar-link">
+                <i class="bi bi-x-lg"></i> Delete Book
+            </a>
+        </li>
+        <li class="nav-item">
+            <a (click)="showViewTable()" class="nav-link text-white sidebar-link">
+                <i class="bi bi-book"></i> View Book
+            </a>
+        </li>
+        <li class="nav-item">
+            <a [routerLink]="'/addStudent'" class="nav-link text-white sidebar-link">
+                <i class="bi bi-person-plus"></i> Add Student
+            </a>
+        </li>
+        <li class="nav-item">
+            <a [routerLink]="'/issuebooks'" class="nav-link text-white sidebar-link">
+                <i class="bi bi-bookmark"></i> Issue Book
+            </a>
+        </li>
+        <li class="nav-item">
+            <a [routerLink]="'/return-book'" class="nav-link text-white sidebar-link">
+                <i class="bi bi-arrow-left-circle"></i> Return Book
+            </a>
+        </li>
+        <li class="nav-item">
+            <a [routerLink]="'/report'" class="nav-link text-white sidebar-link">
+                <i class="bi bi-bar-chart"></i> Report
+            </a>
+        </li>
+        <li class="nav-item">
+            <a (click)="logout()" class="nav-link text-white sidebar-link">
+                <i class="bi bi-box-arrow-right"></i> Logout
+            </a>
+        </li>
+    </ul>
+</nav>

@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { Chart } from 'chart.js/auto';
 import { AuthService } from 'src/services/auth/auth.service';
 import { SharedService } from 'src/services/shared.service';
 
@@ -9,54 +8,48 @@ import { SharedService } from 'src/services/shared.service';
   templateUrl: './dashboard.component.html',
   styleUrls: ['./dashboard.component.css']
 })
-export class DashboardComponent implements OnInit{
-  book : any;
+export class DashboardComponent implements OnInit {
+  book: any[] = [];
+  displayedBooks: any[] = [];
+  currentPage: number = 0;
+  pageSize: number = 12;
+  loading: boolean = false;
+  allDataLoaded: boolean = false;
 
   constructor(private shared: SharedService, private _router: Router, private auth: AuthService) { }
 
-  ngOnInit(){
-    this.loadBarChart();
-    this.loadPieChart();
-    this.getStudent();
+  ngOnInit() {
+    this.getInitialStudentData();
   }
 
-  getStudent(){
-    this.shared.getStudents().subscribe((s) => {
-      this.book = s
-    })
-  }
-
-  loadBarChart() {
-    new Chart('barChart', {
-      type: 'bar',
-      data: {
-        labels: ['Person 1', 'Person 2', 'Person 3', 'Person 4', 'Person 5'],
-        datasets: [{
-          label: 'No. Of Books',
-          data: [5, 8, 12, 7, 4],
-          backgroundColor: '#2f5597',
-        }]
+  getInitialStudentData() {
+    this.loading = true;
+    this.shared.getStudentsForInfiniteScrolling(0, 10).subscribe(
+      (students) => {
+        this.book = students;
+        this.displayedBooks = this.book.slice(0, this.pageSize);
+        this.loading = false;
+      },
+      (error) => {
+        console.error("Error loading students:", error);
+        this.loading = false;
       }
-    });
+    );
   }
 
-  loadPieChart() {
-    new Chart('pieChart', {
-      type: 'pie',
-      data: {
-        datasets: [{
-          data: [15, 25, 50, 25, 15],
-          backgroundColor: [
-            '#ff6384',
-            '#36a2eb',
-            '#cc65fe',
-            '#ffce56',
-            '#e7e9ed'
-          ],
-        }],
-        labels: ['Person 1', 'Person 2', 'Person 3', 'Person 4', 'Person 5']
-      }
-    });
+  loadMoreData() {
+    if (this.loading || this.allDataLoaded) return;
+
+    this.loading = true;
+    const nextPageEnd = this.displayedBooks.length + this.pageSize;
+    const newItems = this.book.slice(this.displayedBooks.length, nextPageEnd);
+
+    if (newItems.length < this.pageSize || nextPageEnd >= this.book.length) {
+      this.allDataLoaded = true;
+    }
+
+    this.displayedBooks = [...this.displayedBooks, ...newItems];
+    this.loading = false;
   }
 
   showViewTable() {
@@ -67,7 +60,7 @@ export class DashboardComponent implements OnInit{
     this._router.navigate(['/books', { deleteMode: false }]);
   }
 
-  logout(){
+  logout() {
     this.auth.logout()
   }
 
