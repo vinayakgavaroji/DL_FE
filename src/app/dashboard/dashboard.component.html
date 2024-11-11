@@ -1,8 +1,8 @@
 <!-- dashboard.component.html -->
-<div class="container-fluid">
+<div class="container-fluid min-vh-100">
     <h2 class="text-center mt-4">Book List</h2>
     <div class="row">
-        <div *ngFor="let i of book" class="col-lg-3 col-md-4 col-sm-6 col-12 mb-4">
+        <div *ngFor="let i of displayedBooks" class="col-lg-3 col-md-4 col-sm-6 col-12 mb-4">
             <div class="card">
                 <div class="card-body">
                     <h5 class="card-title">{{ i.issuedBooks[0]?.bookName }}</h5>
@@ -18,15 +18,12 @@
 
         <div class="text-center my-3" *ngIf="loading">
             <div class="spinner-border" role="status">
-                <span class="visually-hidden">Loading...</span>
+              <span class="visually-hidden">Loading...</span>
             </div>
-        </div>
-
-        <div class="text-center my-3">
-            <button *ngIf="!allDataLoaded && !loading" (click)="loadMoreData()" class="btn btn-primary">
-                Load More
-            </button>
-            <p *ngIf="allDataLoaded">No more items to load.</p>
-        </div>
+          </div>
+      
+          <div class="text-center my-3">
+            <p *ngIf="allDataLoaded && !loading">No more items to load.</p>
+          </div>
     </div>
 </div>

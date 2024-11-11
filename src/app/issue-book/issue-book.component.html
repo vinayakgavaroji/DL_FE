@@ -3,8 +3,8 @@
       <div class="card">
           <div class="card-body">
               <form [formGroup]="issueBookForm" (ngSubmit)="issueBook()">
-                  <div class="form-group">
-                      <label for="book">Select Book:</label>
+                  <div class="form-group mb-2">
+                      <label class="inputLabel" for="book">Select Book:</label>
                       <select class="form-control" formControlName="isbn">
                           <option>Select Book</option>
                           <option *ngFor="let book of getBooks" [value]="book.id">
@@ -18,8 +18,8 @@
                       </div>
                   </div>
 
-                  <div class="form-group">
-                      <label for="student">Select Student:</label>
+                  <div class="form-group mb-2">
+                      <label class="inputLabel" for="student">Select Student:</label>
                       <select class="form-control" formControlName="rollNo">
                           <option *ngFor="let student of getStudents" [value]="student.rollNo">{{ student.name }} - Roll No: {{ student.rollNo }}</option>
                       </select>

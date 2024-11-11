@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, HostListener, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/services/auth/auth.service';
 import { SharedService } from 'src/services/shared.service';
@@ -12,7 +12,7 @@ export class DashboardComponent implements OnInit {
   book: any[] = [];
   displayedBooks: any[] = [];
   currentPage: number = 0;
-  pageSize: number = 12;
+  pageSize: number = 16;
   loading: boolean = false;
   allDataLoaded: boolean = false;
 
@@ -24,16 +24,17 @@ export class DashboardComponent implements OnInit {
 
   getInitialStudentData() {
     this.loading = true;
-    this.shared.getStudentsForInfiniteScrolling(0, 10).subscribe(
-      (students) => {
-        this.book = students;
-        this.displayedBooks = this.book.slice(0, this.pageSize);
-        this.loading = false;
-      },
-      (error) => {
-        console.error("Error loading students:", error);
-        this.loading = false;
+    this.shared.getStudentsForInfiniteScrolling(0, this.pageSize).subscribe((students) => {
+      this.book = students;
+      this.displayedBooks = this.book.slice(0, this.pageSize);
+      this.loading = false;
+      if (this.displayedBooks.length >= this.book.length) {
+        this.allDataLoaded = true;
       }
+    }, (error) => {
+      console.error("Error loading students:", error);
+      this.loading = false;
+    }
     );
   }
 
@@ -51,6 +52,14 @@ export class DashboardComponent implements OnInit {
     this.displayedBooks = [...this.displayedBooks, ...newItems];
     this.loading = false;
   }
+
+  @HostListener("window:scroll", [])
+  onScroll(): void {
+    if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight - 100 && !this.loading) {
+      this.loadMoreData();
+    }
+  }
+
 
   showViewTable() {
     this._router.navigate(['/books']);

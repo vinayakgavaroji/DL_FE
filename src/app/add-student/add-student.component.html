@@ -20,12 +20,12 @@
                         </div>
                     </div>
                     <button [disabled]="!submitted && studentForm.invalid" class="btn btn-primary" type="submit">Add Student</button>
-                    <div class="text-success" *ngIf="successMsg; else message">
+                    <div class="alert alert-success mt-3" *ngIf="successMsg; else message">
                         {{ successMsg }}
                       </div>
           
                       <ng-template #message>
-                        <div class="text-danger" *ngIf="errorMsg">{{ errorMsg }}</div>
+                        <div class="alert alert-danger mt-3" *ngIf="errorMsg">{{ errorMsg }}</div>
                       </ng-template>
                 </form>
             </div>
